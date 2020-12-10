@@ -39,9 +39,10 @@ function setDicePool (dicePool) {
 function chooseDice (dicePool) {
   //console.log(dicePool);
   let diceNr = random(0, dicePool.length);
-  let diceColor = dicePool[diceNr];
+  //let diceColor = dicePool[diceNr];
   return dicePool.splice(diceNr, 1);
 }
+
 
 function playGame () {
   
@@ -50,23 +51,23 @@ function playGame () {
     
     function playRound () {
       let diceResult = new Array;
-      
+      console.log("");
       for (let i = 0; i < diceNum; i++) {
         if (!actualDice[i]) {
           actualDice[i] = chooseDice(dicePool);
-          console.log("A tartóból kivett kocka: "+actualDice[i]);
         } 
       }
+      console.log(`The dice(s) u picked: ${actualDice}`);
       for (let i = 0; i < diceNum; i++) {
         if (actualDice[i] == "green") {
           diceResult.push(greenDice(diceRoll()));
-          console.log("A kidobott zöld kocka értéke: "+diceResult[i]);
+          console.log(`On GREEN dice u rolled: ${diceResult[i]}`);
         } else if (actualDice[i] == "yellow" ) {
           diceResult.push(yellowDice(diceRoll()));
-          console.log("A kidobott sárga kocka értéke: "+diceResult[i]);
+          console.log(`On YELLOW dice u rolled: ${diceResult[i]}`);
         } else if (actualDice[i] == "red" ) {
           diceResult.push(redDice(diceRoll()));
-          console.log("A kidobott piros kocka értéke: "+diceResult[i]);
+          console.log(`On RED dice u rolled: ${diceResult[i]}`);
         }
       }
       console.log(diceResult);
@@ -126,5 +127,4 @@ function playGame () {
     turnBrains: 0,
     guns: 0,
   }
-  
 playGame();
